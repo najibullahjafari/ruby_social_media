@@ -6,7 +6,8 @@
 # this file is here to facilitate running it.
 
 require 'rubygems'
-
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 m = Module.new do
   module_function
 
@@ -50,6 +51,8 @@ m = Module.new do
     File.expand_path(lockfile)
   end
 
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
   def lockfile_version
     return unless File.file?(lockfile)
 
