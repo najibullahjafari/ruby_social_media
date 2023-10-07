@@ -23,4 +23,21 @@ RSpec.describe Post, type: :model do
     post = user.posts.create(title: 'Example Post', comments_counter: 0, likes_counter: 0)
     expect { post.update_post_counter }.to change { user.reload.posts_counter }.by(1)
   end
+  # method tests
+  it 'should test update_user_counter' do
+    user = User.new(name: 'najib', posts_counter: 0)
+    post = Post.create(title: 'Example Post', author: user)
+    expect(user.posts_counter).to eq(0)
+    post.update_post_counter
+    expect(user.posts_counter).to eq(1)
+  end
+
+  it 'should test recent comments  method' do
+    user = User.new(name: 'najib', posts_counter: 0)
+    post = Post.create(title: 'Example Post', author: user)
+    comments = []
+    recent_comments = post.recent_comments
+    expect(recent_comments).to eq(comments.reverse)
+    expect(recent_comments.count).to eq(0)
+  end
 end

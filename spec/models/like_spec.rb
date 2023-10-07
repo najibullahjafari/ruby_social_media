@@ -18,4 +18,11 @@ RSpec.describe Like, type: :model do
     fountp = Post.find_by(id: post.id)
     expect(fountp).to_not be_present
   end
+  # method test
+  it 'like counter method' do
+    user = User.create(name: 'najib', posts_counter: 0)
+    post = Post.create(title: 'man', comments_counter: 0, likes_counter: 0)
+    Comment.create(user:, post:)
+    expect(post.likes_counter).to eq('0')
+  end
 end

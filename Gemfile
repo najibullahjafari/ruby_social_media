@@ -7,8 +7,8 @@ ruby '3.2.2'
 gem 'rails', '~> 7.0.8'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem 'factory_bot_rails'
 gem 'sprockets-rails'
-
 # add spec
 gem 'rspec-rails', '~> 5.0'
 # Use postgresql as the database for Active Record
