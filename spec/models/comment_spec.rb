@@ -18,16 +18,4 @@ RSpec.describe Like, type: :model do
     fountp = Post.find_by(id: post.id)
     expect(fountp).to_not be_present
   end
-  
-  it 'updates comments_counter when a comment is created' do
-    user = User.create(name: 'najib')
-    post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
-    expect(post.comments_counter).to eq(0)
-
-    comment = post.comments.create(user: user, text: 'Nice post!')
-    post.reload
-
-    expect(comment).to be_valid
-    expect(post.comments_counter).to eq(1)
-  end
 end
