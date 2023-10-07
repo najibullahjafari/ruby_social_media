@@ -22,13 +22,13 @@ RSpec.describe Like, type: :model do
   it 'like counter method' do
     user = User.create(name: 'najib', posts_counter: 0)
     post = Post.create(title: 'man', comments_counter: 0, likes_counter: 0)
-    Comment.create(user: user, post: post)
+    Comment.create(user:, post:)
     expect(post.likes_counter).to eq('0')
   end
   it 'updates the posts likes_counter' do
     user = User.create(name: 'najib', posts_counter: 0)
     post = Post.create(title: 'man', comments_counter: 0, likes_counter: 0)
-    like = Like.create(user: user, post: post)
-    expect{ like.update_likes_counter }.to_not change{ post.likes_counter}
+    like = Like.create(user:, post:)
+    expect { like.update_likes_counter }.to_not(change { post.likes_counter })
   end
 end
