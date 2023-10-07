@@ -1,8 +1,11 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, counter_cache: true
+  after_create :update_comment_count
 
-  def update_comments_counter
-    post.update(comments_counter: post.comments.count)
+  private
+
+  def update_comment_count
+    post.increment!(:comments_counter)
   end
 end

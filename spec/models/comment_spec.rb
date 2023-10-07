@@ -1,34 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe Like, type: :model do
-  user = User.new(name: 'najib', posts_counter: 0)
-  post = Post.new(title: 'man', comments_counter: 0, likes_counter: 0)
-  it 'is vlaid with a user and a post' do
-    cm = Comment.new(user:, post:)
-    expect(cm).to be_valid
+RSpec.describe Comment, type: :model do
+  describe 'associations' do
+    it { should belong_to(:user) }
+    it { should belong_to(:post).counter_cache(true) }
   end
 
-  it 'is invalid without user' do
-    cm = Comment.new(post:)
-    expect(cm).to be_invalid
-  end
+  describe 'methods' do
+    let(:user) { create(:user) }
+    let(:post) { create(:post) }
 
-  it 'the comment sould not be present' do
-    Comment.new(user:, post:)
-    fountp = Post.find_by(id: post.id)
-    expect(fountp).to_not be_present
-  end
+    describe '#update_comment_count' do
+      it 'increments the comments_counter' do
+        post = Posts.new
 
-  it 'the comment sould not be present' do
-    Comment.new(user:, post:)
-    fountp = Post.find_by(id: post.id)
-    expect(fountp).to_not be_present
-  end
-  # method test
-  it 'comment counter method' do
-    user = User.create(name: 'najib', posts_counter: 0)
-    post = Post.create(title: 'man', comments_counter: 0, likes_counter: 0)
-    Comment.create(user:, post:)
-    expect(post.comments_counter).to eq('0')
+        expect do
+          post.update_comment_counter
+        end.to change {
+          post.comments_counter
+        }.by(1)
+      end
+    end
   end
 end

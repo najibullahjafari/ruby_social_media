@@ -1,5 +1,5 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'shoulda/matchers'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -14,14 +14,7 @@ require 'rspec/rails'
 # run twice. It is recommended that you do not name files matching this glob to
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
-#
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
-# directory. Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
-#
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
-require 'factory_bot_rails'
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -30,6 +23,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{Rails.root}/spec/fixtures"
@@ -37,16 +31,26 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+  config.include FactoryBot::Syntax::Methods
+
+  # Include shoulda-matchers configuration
+  Shoulda::Matchers.configure do |shoulda_config|
+    shoulda_config.integrate do |with|
+      # Choose the ORM you're using (ActiveRecord, Mongoid, etc.)
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
-  # RSpec Rails can automatically mix in different behaviours to your tests
+  # RSpec Rails can automatically mix in different behaviors to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
-  # You can disable this behaviour by removing the line below, and instead
+  # You can disable this behavior by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
   #     RSpec.describe UsersController, type: :controller do
