@@ -18,8 +18,8 @@ RSpec.describe Like, type: :model do
     fountp = Post.find_by(id: post.id)
     expect(fountp).to_not be_present
   end
-  #test for comments_counter_method
-   it 'updates comments_counter when a comment is created' do
+  
+  it 'updates comments_counter when a comment is created' do
     user = User.create(name: 'najib')
     post = user.posts.create(title: 'My Post', comments_counter: 0, likes_counter: 0)
     expect(post.comments_counter).to eq(0)
