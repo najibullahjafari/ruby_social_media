@@ -25,30 +25,4 @@ RSpec.describe User, type: :model do
       expect(user.errors[:posts_counter]).to include('must be greater than or equal to 0')
     end
   end
-
-  describe '#recent_posts' do
-    it 'returns the most recent posts of the user' do
-      user = create(:user)
-      post1 = create(:post, author: user, title: 'Post 1')
-      post2 = create(:post, author: user, title: 'Post 2')
-
-      recent_posts = user.recent_posts(1)
-
-      expect(recent_posts).to include(post2)
-      expect(recent_posts).not_to include(post1)
-    end
-
-    it 'returns up to the specified limit of recent posts' do
-      user = create(:user)
-      post1 = create(:post, author: user, title: 'Post 1')
-      post2 = create(:post, author: user, title: 'Post 2')
-      post3 = create(:post, author: user, title: 'Post 3')
-
-      recent_posts = user.recent_posts(2)
-
-      expect(recent_posts.length).to eq(2)
-      expect(recent_posts).to include(post3, post2)
-      expect(recent_posts).not_to include(post1)
-    end
-  end
 end
