@@ -26,8 +26,8 @@
     2.times do |k|
       Comment.create!(
         content: "Comment #{k + 1} on Post #{j + 1} by User #{i + 1}",
-        user: user,
-        post: post
+        user:,
+        post:
       )
     end
 
@@ -36,7 +36,7 @@
       user_for_like = User.where.not(id: user.id).sample
       Like.create!(
         user: user_for_like,
-        post: post
+        post:
       )
     end
   end
