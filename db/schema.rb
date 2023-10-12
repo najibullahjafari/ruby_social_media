@@ -10,23 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_231_005_110_248) do
+ActiveRecord::Schema[7.0].define(version: 20_231_011_090_408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'comments', force: :cascade do |t|
-    t.bigint 'user_id'
+    t.bigint 'user_id', null: false
+    t.bigint 'post_id', null: false
     t.text 'text'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_comments_on_post_id'
     t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
   create_table 'likes', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.bigint 'post_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.bigint 'user_id', null: false
+    t.bigint 'post_id', null: false
     t.index ['post_id'], name: 'index_likes_on_post_id'
     t.index ['user_id'], name: 'index_likes_on_user_id'
   end
@@ -47,11 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 20_231_005_110_248) do
     t.string 'name'
     t.text 'photo_url'
     t.text 'bio'
-    t.integer 'posts_counter'
+    t.integer 'posts_counter', default: 0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
 
+  add_foreign_key 'comments', 'posts'
   add_foreign_key 'comments', 'users'
   add_foreign_key 'likes', 'posts'
   add_foreign_key 'likes', 'users'

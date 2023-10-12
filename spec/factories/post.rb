@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :post do
-    title { 'Title' }
-    text { 'Text' }
+    title { 'Test Title' }
     comments_counter { 0 }
-    likes_counter { 0 }
-    association :author, factory: :user
+    # ... other attributes
+    author { create(:user) } # This ensures a User is created when a Post is created
   end
 end
