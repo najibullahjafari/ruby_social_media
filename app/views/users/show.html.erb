@@ -1,3 +1,30 @@
-<h1>User Details</h1>
-<p>Name: <%= @user.name %></p>
-<p>Bio: <%= @user.bio %></p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+
+    <div class="col-md-8">
+      <!-- User Bio -->
+      <div class="user-bio">
+        <h2>User Bio</h2>
+        <p><%= @user.bio %></p>
+      </div>
+
+      <!-- Posts by the User -->
+      <div class="user-posts">
+        <h2>Posts by <%= @user.name %></h2>
+        <% @user.recent_posts.each do |post| %>
+          <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
+          <p><%= post.text %></p>
+          <p>
+            <small>Comments: <%= post.comments_counter || 0 %>,</small>
+            <small>Likes: <%= post.likes_counter || 0 %></small>
+          </p>
+        <% end %>
+        <button>
+          <%= link_to 'See all Posts', user_posts_path(@user) %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
