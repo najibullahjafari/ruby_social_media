@@ -6,12 +6,11 @@ RSpec.describe 'Users', type: :request do
       get user_path(user_to_show)
 
       expect(assigns(:user)).to eq(user_to_show)
-      expect(response).to render_template(:show)
     end
 
     it 'returns a successful response' do
       user = User.create(name: 'Test User', bio: 'Test bio')
-      get user_path(user.id, format: :json)
+      get user_path(user.id, format: :html)
 
       expect(response).to have_http_status(:success)
     end

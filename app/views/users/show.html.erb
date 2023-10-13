@@ -1,3 +1,39 @@
-<h1>User Details</h1>
-<p>Name: <%= @user.name %></p>
-<p>Bio: <%= @user.bio %></p>
+<!-- users/show.html.erb -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- User Info -->
+      <div class="user-info">
+        <!-- Profile Picture -->
+        <% if @user.photo_url.present? %>
+          <img src="<%= @user.photo_url %>" alt="<%= @user.name %>" class="img-fluid rounded-circle">
+        <% end %>
+        <!-- User Name -->
+        <h1><%= @user.name %></h1>
+        <!-- Number of Posts -->
+        <p><strong>Number of Posts:</strong> <%= @user.posts.count %></p>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <!-- User Bio -->
+      <div class="user-bio">
+        <h2>User Bio</h2>
+        <p><%= @user.bio %></p>
+      </div>
+
+      <!-- Posts by the User -->
+      <div class="user-posts">
+        <h2>Posts by <%= @user.name %></h2>
+        <ul class="list-group">
+          <% @user.posts.each do |post| %>
+            <li class="list-group-item">
+              <%= link_to post.title, user_post_path(@user, post) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

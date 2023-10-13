@@ -1,7 +1,18 @@
-<h1>Users List</h1>
+<!-- users/index.html.erb -->
 
-<ul>
+<h1 class="display-4">All Users</h1>
+<ul class="list-group">
   <% @users.each do |user| %>
-    <li><%= user.name %></li>
+    <li class="list-group-item">
+      <div class="d-flex">
+        <% if user.photo_url.present? %>
+          <img src="<%= user.photo_url %>" alt="<%= user.name %>" class="rounded-circle mr-3" style="max-width: 50px;">
+        <% end %>
+        <div class="user-details">
+          <h2 class="h5"><%= link_to user.name, user_path(user), class: "text-primary" %></h2>
+          <span class="badge badge-info">Posts: <%= user.posts.count %></span>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ul>
