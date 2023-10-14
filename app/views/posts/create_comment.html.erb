@@ -1,0 +1,13 @@
+<!-- app/views/posts/create_comment.html.erb -->
+<% if user_signed_in? %>
+  <%= form_with(model: [@post, Comment.new], url: create_comment_path) do |comment_form| %>
+    <div class="form-group">
+      <%= comment_form.label :text %>
+      <%= comment_form.text_area :text, class: 'form-control' %>
+    </div>
+
+    <%= comment_form.submit 'Create Comment', class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <p>Please sign in to leave a comment.</p>
+<% end %>
