@@ -34,3 +34,7 @@
 .badge-info {
   background-color: #17a2b8;
 }
+
+.no-border {
+  border: none
+}

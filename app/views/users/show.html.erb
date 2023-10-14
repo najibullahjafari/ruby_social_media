@@ -1,30 +1,49 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-4">
+      <!-- User Info -->
+      <!-- ... (existing user info code) ... -->
     </div>
 
     <div class="col-md-8">
       <!-- User Bio -->
-      <div class="user-bio">
-        <h2>User Bio</h2>
-        <p><%= @user.bio %></p>
+      <!-- User Info -->
+      <div class="user-info">
+        <!-- Profile Picture -->
+        <% if @user.photo_url.present? %>
+          <img src="<%= @user.photo_url %>" alt="<%= @user.name %>" class="img-fluid rounded-circle">
+        <% end %>
+        <!-- User Name -->
+        <h1><%= @user.name %></h1>
+        <!-- Number of Posts -->
+        <p><strong>Number of Posts:</strong> <%= @user.posts.count %></p>
+        <!-- Add other user information here -->
+        <p><strong>Bio:</strong> <%= @user.bio %></p>
+        <!-- Add more user attributes as needed -->
       </div>
 
-      <!-- Posts by the User -->
+      <!-- List of All Posts by the User -->
       <div class="user-posts">
-        <h2>Posts by <%= @user.name %></h2>
-        <% @user.recent_posts.each do |post| %>
-          <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
-          <p><%= post.text %></p>
-          <p>
-            <small>Comments: <%= post.comments_counter || 0 %>,</small>
-            <small>Likes: <%= post.likes_counter || 0 %></small>
-          </p>
-        <% end %>
-        <button>
-          <%= link_to 'See all Posts', user_posts_path(@user) %>
-        </button>
+        <h2 class="mt-4">All Posts by <%= @user.name %></h2>
+        <ul class="list-group">
+          <% @posts.each do |post| %>
+            <li class="list-group-item">
+              <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
+              <p>Comments: <%= post.comments_counter %> | Likes: <%= post.likes_counter %></p>
+            </li>
+          <% end %>
+        </ul>
       </div>
+
+      <!-- Show More Button (optional) -->
+      <% if @posts.next_page %>
+        <%= link_to 'Show More Posts', user_posts_path(@user, page: @posts.next_page), class: 'btn btn-primary mt-4' %>
+      <% end %>
+
+      <!-- Create Post Button -->
+      <button>
+        <%= link_to 'Create Post', new_user_post_path(@user), class: 'btn btn-primary no-border' %>
+      </button>
     </div>
   </div>
 </div>

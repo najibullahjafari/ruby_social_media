@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :post, counter_cache: true
+  belongs_to :post
   after_create :update_comment_count
 
   private

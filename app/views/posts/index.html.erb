@@ -1,13 +1,23 @@
-<h1>List of Postss</h1>
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= link_to post.title, user_post_path(@user, post) %>
-      <ul>
-        <% post.recent_comments.each do |comment| %>
-          <li><%= comment.text %></li>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Create Post Button -->
+      <%= link_to 'Create Post', new_user_post_path(@user), class: 'btn btn-primary mb-4' %>
+
+      <!-- List of my posts -->
+      <h1 class="mb-4">List of Posts</h1>
+      <ul class="list-group">
+        <% @posts.each do |post| %>
+          <li class="list-group-item">
+            <%= link_to post.title, user_post_path(@user, post), class: 'text-decoration-none' %>
+            <ul class="list-group list-group-flush mt-2">
+              <% post.recent_comments.each do |comment| %>
+                <li class="list-group-item"><%= comment.text %></li>
+              <% end %>
+            </ul>
+          </li>
         <% end %>
       </ul>
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </div>
+</div>
