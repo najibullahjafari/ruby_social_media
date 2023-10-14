@@ -1,8 +1,0 @@
-<!-- app/views/posts/like.html.erb -->
-<% if user_signed_in? %>
-  <%= form_with(url: like_path(@post)) do |like_form| %>
-    <%= like_form.submit 'Like', class: 'btn btn-primary' %>
-  <% end %>
-<% else %>
-  <p>Please sign in to like this post.</p>
-<% end %>

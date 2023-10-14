@@ -32,7 +32,6 @@ class PostsController < ApplicationController
     @like = current_user.likes.new(post: @post)
 
     if @like.save
-      @like.update_like_count # Update the like count for the post
       redirect_to user_post_path(user_id: @post.author.id, id: @post.id), notice: 'You liked!'
     else
       redirect_to user_post_path(user_id: @post.author.id, id: @post.id),
