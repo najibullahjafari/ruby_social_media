@@ -80,6 +80,8 @@ Clone this repository to your desired folder:
 - GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
 - Twitter: [Najibullah_jafari](https://twitter.com/Najib_Jafari_)
 - LinkedIn: [Najibullah_jafari](https://www.linkedin.com/in/najibullahjafari/)
+👤 **Joseph L Kausi**
+👤 **Glauber Bannwart**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
