@@ -7,17 +7,18 @@
       <!-- List of my posts -->
       <h1 class="mb-4">List of Posts</h1>
       <ul class="list-group">
-        <% @posts.each do |post| %>
-          <li class="list-group-item">
-            <%= link_to post.title, user_post_path(@user, post), class: 'text-decoration-none' %>
-            <ul class="list-group list-group-flush mt-2">
-              <% post.recent_comments.each do |comment| %>
-                <li class="list-group-item"><%= comment.text %></li>
-              <% end %>
-            </ul>
-          </li>
+  <% @posts.each do |post| %>
+    <li class="list-group-item">
+      <%= link_to post.title, user_post_path(@user, post), class: 'text-decoration-none' %>
+      <ul class="list-group list-group-flush mt-2">
+        <% post.comments.each do |comment| %>
+          <li class="list-group-item"><%= comment.text %></li>
         <% end %>
       </ul>
+    </li>
+  <% end %>
+</ul>
+
     </div>
   </div>
 </div>
