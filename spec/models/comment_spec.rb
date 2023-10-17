@@ -11,15 +11,14 @@ RSpec.describe Comment, type: :model do
     let(:post) { create(:post) }
 
     describe '#update_comment_count' do
-      it 'increments the comments_counter' do
-        post = Posts.new
+  it 'increments the comments_counter' do
+    post = create(:post) # Use FactoryBot to create a post
+    initial_comments_count = post.comments_counter
 
-        expect do
-          post.update_comment_counter
-        end.to change {
-          post.comments_counter
-        }.by(1)
-      end
-    end
+    Comment.create(user: user, post: post, text: "Sample comment")
+
+    expect(post.reload.comments_counter).to eq(initial_comments_count + 1)
+  end
+end
   end
 end

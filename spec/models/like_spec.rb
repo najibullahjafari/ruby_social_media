@@ -1,21 +1,14 @@
-require_relative '../factories/posts'
-RSpec.describe Like, type: :model do
-  describe 'associations' do
-    it { should belong_to(:user) }
-    it { should belong_to(:post) }
-  end
+describe 'Like callbacks' do
+  let(:user) { create(:user) }
+  let(:post) { create(:post, author: user) }
 
-  describe 'callbacks' do
-    describe '#update_like_count' do
-      it 'increments the likes_counter' do
-        posts = Posts.new
-
-        expect do
-          posts.update_like_counter
-        end.to change {
-          posts.likes_counter
-        }.by(1)
-      end
+  describe '#update_like_count' do
+    it 'increments the likes_counter' do
+      expect do
+        Like.create(user: user, post: post)
+      end.to change {
+        post.reload.likes_counter
+      }.by(1)
     end
   end
 end

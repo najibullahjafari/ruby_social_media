@@ -6,6 +6,8 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
 
+gem 'loofah', '2.21.3'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -47,6 +49,7 @@ gem 'bootstrap', '~> 5.3.1'
 # Gemfile
 gem 'will_paginate', '~> 3.3'
 
+gem 'database_cleaner'
 
 
 # Use Sass to process CSS

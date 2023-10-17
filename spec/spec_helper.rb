@@ -15,10 +15,16 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'factory_bot_rails'
 require 'shoulda/matchers'
+require 'capybara/rspec'
+
+Capybara.default_driver = :selenium
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :firefox)
+end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  config.extend FactoryBot::Syntax::Methods
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -54,6 +60,17 @@ RSpec.configure do |config|
   # with RSpec, but feel free to customize to your heart's content.
   # (The rest of your configuration options go here...)
 
-  # ...
- 
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+  end
+  
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+  
 end

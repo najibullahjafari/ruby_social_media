@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../factories/posts'
 
 RSpec.describe Post, type: :model do
   let(:user) { create(:user) }
@@ -19,21 +18,12 @@ RSpec.describe Post, type: :model do
 
   describe '#recent_comments' do
     it 'returns the most recent comments for the post' do
-      post = Posts.new
-
-      comment1 = double('Comment', created_at: Time.now - 5)
-      comment2 = double('Comment', created_at: Time.now - 4)
-      comment3 = double('Comment', created_at: Time.now - 3)
-      comment4 = double('Comment', created_at: Time.now - 2)
-      comment5 = double('Comment', created_at: Time.now - 1)
-      comment6 = double('Comment', created_at: Time.now)
-
-      post.add_comment(comment1)
-      post.add_comment(comment2)
-      post.add_comment(comment3)
-      post.add_comment(comment4)
-      post.add_comment(comment5)
-      post.add_comment(comment6)
+      comment1 = Comment.create(user: user, post: post, created_at: Time.now - 5.days)
+      comment2 = Comment.create(user: user, post: post, created_at: Time.now - 4.days)
+      comment3 = Comment.create(user: user, post: post, created_at: Time.now - 3.days)
+      comment4 = Comment.create(user: user, post: post, created_at: Time.now - 2.days)
+      comment5 = Comment.create(user: user, post: post, created_at: Time.now - 1.day)
+      comment6 = Comment.create(user: user, post: post, created_at: Time.now)
 
       expect(post.recent_comments).to eq([comment6, comment5, comment4, comment3, comment2])
     end
