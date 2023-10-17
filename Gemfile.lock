@@ -95,6 +95,12 @@ GEM
     cleanup (0.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    database_cleaner (2.0.2)
+      database_cleaner-active_record (>= 2, < 3)
+    database_cleaner-active_record (2.1.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -107,6 +113,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
@@ -288,10 +296,13 @@ DEPENDENCIES
   capybara (~> 3.39, >= 3.39.2)
   chromedriver-helper (~> 1.0)
   cleanup
+  database_cleaner (~> 2.0, >= 2.0.2)
   debug
   factory_bot_rails
+  faker (~> 3.2, >= 3.2.1)
   importmap-rails
   jbuilder
+  loofah (~> 2.21.3)
   nokogiri
   pg (~> 1.1)
   psych (~> 3.0)

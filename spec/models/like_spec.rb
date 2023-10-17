@@ -5,7 +5,7 @@ describe 'Like callbacks' do
   describe '#update_like_count' do
     it 'increments the likes_counter' do
       expect do
-        Like.create(user: user, post: post)
+        Like.create(user:, post:)
       end.to change {
         post.reload.likes_counter
       }.by(1)

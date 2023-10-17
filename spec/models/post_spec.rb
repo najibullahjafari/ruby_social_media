@@ -18,12 +18,12 @@ RSpec.describe Post, type: :model do
 
   describe '#recent_comments' do
     it 'returns the most recent comments for the post' do
-      comment1 = Comment.create(user: user, post: post, created_at: Time.now - 5.days)
-      comment2 = Comment.create(user: user, post: post, created_at: Time.now - 4.days)
-      comment3 = Comment.create(user: user, post: post, created_at: Time.now - 3.days)
-      comment4 = Comment.create(user: user, post: post, created_at: Time.now - 2.days)
-      comment5 = Comment.create(user: user, post: post, created_at: Time.now - 1.day)
-      comment6 = Comment.create(user: user, post: post, created_at: Time.now)
+      Comment.create(user:, post:, created_at: Time.now - 5.days)
+      comment2 = Comment.create(user:, post:, created_at: Time.now - 4.days)
+      comment3 = Comment.create(user:, post:, created_at: Time.now - 3.days)
+      comment4 = Comment.create(user:, post:, created_at: Time.now - 2.days)
+      comment5 = Comment.create(user:, post:, created_at: Time.now - 1.day)
+      comment6 = Comment.create(user:, post:, created_at: Time.now)
 
       expect(post.recent_comments).to eq([comment6, comment5, comment4, comment3, comment2])
     end
