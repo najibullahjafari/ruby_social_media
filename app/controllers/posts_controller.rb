@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  # before_action :set_post, only: [:show, :like, :create_comment]
+  before_action :set_post, only: [:show]
   # before_action :authenticate_user, only: [:like, :create_comment]
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.includes(:user)
   end
 
   def show
@@ -51,6 +51,6 @@ class PostsController < ApplicationController
 
   def set_post
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = Post.includes(comments: :user).find(params[:id])
   end
 end
