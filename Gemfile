@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
@@ -62,6 +62,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'psych', '~>3.0'
+
+  gem 'webdrivers', '~> 5.0', require: false
+  gem 'chromedriver-helper', '~> 1.0'
+  gem 'watir-rails', '~> 2.0'
 end
 
 group :development do
@@ -77,7 +82,9 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+
+  gem 'cleanup'
 end

@@ -5,6 +5,7 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'watir'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -67,4 +68,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  #Webdrivers::Chromedriver.required_version = '118.0.5993.70'
+  # Determine the driver path
+  #chromedriver_path = File.join(File.absolute_path('C:/Program Files/Google/Chrome/Applicaion/chrome-win64', File.dirname(__FILE__)),"browsers","chromedriver.exe")
+
+  # Initialize the browser with the driver path
+  #browser = Watir::Browser.new :chrome, driver_path: chromedriver_path
 end

@@ -68,6 +68,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
     bindex (0.8.1)
@@ -87,6 +89,10 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chromedriver-helper (1.0.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
+    cleanup (0.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -102,6 +108,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -110,13 +117,14 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.8.1)
+    io-like (0.3.1)
+    irb (1.8.3)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -140,16 +148,18 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.4-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
+    pg (1.5.4-x64-mingw-ucrt)
     popper_js (2.11.8)
-    psych (5.1.0)
-      stringio
+    psych (3.3.4)
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.6.0)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -176,7 +186,7 @@ GEM
       minitest
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.6.0)
-      loofah (~> 2.21)
+      loofah (~> 2.21.4)
       nokogiri (~> 1.14)
     railties (7.0.8)
       actionpack (= 7.0.8)
@@ -186,8 +196,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    rdoc (6.5.0)
-      psych (>= 4.0.0)
+    rdoc (6.3.3)
     regexp_parser (2.8.1)
     reline (0.3.9)
       io-console (~> 0.5)
@@ -233,7 +242,6 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
-    stringio (3.0.8)
     thor (1.2.2)
     tilt (2.3.0)
     timeout (0.4.0)
@@ -243,11 +251,24 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.3)
+      tzinfo (>= 1.0.0)
+    watir (7.3.0)
+      regexp_parser (>= 1.2, < 3)
+      selenium-webdriver (~> 4.2)
+    watir-rails (2.0.0)
+      rack
+      rails
+      watir (>= 6.0.0.beta4)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
     websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -258,18 +279,22 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3.1)
-  capybara
+  capybara (~> 3.39, >= 3.39.2)
+  chromedriver-helper (~> 1.0)
+  cleanup
   debug
   factory_bot_rails
   importmap-rails
   jbuilder
   nokogiri
   pg (~> 1.1)
+  psych (~> 3.0)
   puma (~> 5.0)
   rails (~> 7.0.8)
   rails-controller-testing
@@ -280,11 +305,13 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  watir-rails (~> 2.0)
   web-console
+  webdrivers (~> 5.0)
   will_paginate (~> 3.3)
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.4.20

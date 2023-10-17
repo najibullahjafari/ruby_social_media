@@ -55,4 +55,5 @@ RSpec.configure do |config|
   # (The rest of your configuration options go here...)
 
   # ...
+ 
 end
