@@ -6,6 +6,8 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
 
+gem 'loofah', '2.21.3'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -47,6 +49,7 @@ gem 'bootstrap', '~> 5.3.1'
 # Gemfile
 gem 'will_paginate', '~> 3.3'
 
+gem 'database_cleaner'
 
 
 # Use Sass to process CSS
@@ -62,6 +65,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
+
+  gem 'faker'
 end
 
 group :development do
@@ -77,6 +82,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'webdrivers'
   gem 'capybara'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
