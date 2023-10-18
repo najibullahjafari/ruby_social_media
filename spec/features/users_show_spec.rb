@@ -1,4 +1,4 @@
-RSpec.feature "UsersShow", type: :feature, js: true do
+RSpec.feature 'UsersShow', type: :feature, js: true do
   let(:user) { FactoryBot.create(:user) } # Assuming you have a user factory
 
   scenario "Visiting a user's show page displays their posts" do

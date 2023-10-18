@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
 
-gem 'loofah', '2.21.3'
+gem 'loofah', '~>2.21.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -49,8 +49,7 @@ gem 'bootstrap', '~> 5.3.1'
 # Gemfile
 gem 'will_paginate', '~> 3.3'
 
-gem 'database_cleaner'
-
+gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -63,10 +62,13 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Add RSpec for testing
   gem 'factory_bot_rails'
+  gem 'psych', '~>3.0'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
 
-  gem 'faker'
+  gem 'chromedriver-helper', '~> 1.0'
+  gem 'watir-rails', '~> 2.0'
+  gem 'webdrivers', '~> 5.0', require: false
 end
 
 group :development do
@@ -82,8 +84,11 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'webdrivers'
-  gem 'capybara'
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+
+  gem 'cleanup'
+
+  gem 'faker', '~> 3.2', '>= 3.2.1'
 end
