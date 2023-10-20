@@ -86,3 +86,5 @@ gem 'letter_opener'
 gem 'popper_js', '~> 2.9'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'will_paginate'
+gem 'cancancan'
+

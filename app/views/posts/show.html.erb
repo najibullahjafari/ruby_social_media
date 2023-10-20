@@ -2,6 +2,9 @@
   <!-- Post Header -->
   <div class="post-header">
     <h2 class="post-title">Post #<%= @post.id %> by <%= @post.author.name %></h2>
+    <% if can? :destroy, @post %>
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <% end %>
   </div>
 
   <!-- Post Content -->
@@ -21,14 +24,18 @@
   </div>
 
   <!-- Comments Section -->
-  <div class="comments-section">
-    <h3>Comments:</h3>
-    <% @post.comments.each do |comment| %>
-      <div class="comment">
-        <strong><%= comment.user.name %>:</strong> <%= comment.content %>
-      </div>
-    <% end %>
-  </div>
+<div class="comments-section">
+  <h3>Comments:</h3>
+  <% @post.comments.each do |comment| %>
+    <div class="comment">
+      <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+      <% if can? :destroy, comment %>
+        <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 
   <!-- Add a Comment Form -->
   <div class="add-comment-form">

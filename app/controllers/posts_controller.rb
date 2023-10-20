@@ -17,13 +17,27 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def create
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
-    else
-      render :new
-    end
+   def create
+    @user = User.find(params[:user_id])
+    @post = Post.new(
+      author: current_user,
+      likes_counter: 0,
+      comments_counter: 0,
+      content: post_params[:content],
+      text: post_params[:text]
+    )
+
+  def destroy
+    post = Post.find(params[:id])
+
+    authorize! :destroy, post # authorization check
+
+    post.comments.destroy_all
+    post.likes.destroy_all
+
+    post.destroy
+
+    redirect_to users_path, notice: 'Post was successfully deleted.'
   end
 
   private
