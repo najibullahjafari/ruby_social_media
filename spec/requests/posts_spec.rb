@@ -47,7 +47,6 @@ RSpec.describe Post, type: :model do
       user = FactoryBot.create(:user)
       post = FactoryBot.create(:post, author: user)
       initial_count = user.posts_counter
-
       # Now, decrement the counter to simulate a scenario where we want to test the increment function
       user.decrement!(:posts_counter)
       # Call the method
