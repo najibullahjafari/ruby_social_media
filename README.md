@@ -271,6 +271,8 @@ You can deploy this project using:
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
+1. Add a beautifull UI
+2. Add an endpoint for our API
 
 > We this project can improve, we are planning to include the next features soon:
 
