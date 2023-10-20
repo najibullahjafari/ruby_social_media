@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>Blog in Rails App</b></h3>
+  <h3><b>Ruby Social Media</b></h3>
 </div>
 
 [![codecov](https://codecov.io/gh/cancelei/blog-in-rails/graph/badge.svg?token=ITBDQ9ZRO7)](https://codecov.io/gh/cancelei/blog-in-rails)
@@ -153,17 +153,18 @@ You can deploy this project using:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Glauber Bannwart**
-
-- GitHub: [@cancelei](https://github.com/cancelei)
-- LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
-
   
 👤 **Najibullah Jafari**
 
 - GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
 - Twitter: [Najibullah_jafari](https://twitter.com/Najib_Jafari_)
 - LinkedIn: [Najibullah_jafari](https://www.linkedin.com/in/najibullahjafari/)
+
+👤 **Glauber Bannwart**
+
+- GitHub: [@cancelei](https://github.com/cancelei)
+- LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
+
 
 👤 **Joseph L Kausi**
 
@@ -195,7 +196,7 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/cancelei/blog-in-rails/issues).
+Feel free to check the [issues page](https://www.linkedin.com/in/najibullahjafari/ruby_social_media/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
