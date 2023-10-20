@@ -60,7 +60,6 @@ RSpec.describe Post, type: :model do
 end
 # spec/models/post_spec.rb
 
-require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   # For creating valid objects during testing

@@ -47,7 +47,6 @@ RSpec.describe User, type: :model do
 end
 # spec/models/user_spec.rb
 
-require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # For the sake of creating valid objects during testing

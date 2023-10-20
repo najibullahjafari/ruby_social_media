@@ -40,7 +40,6 @@ RSpec.feature 'UserInteractions', type: :feature do
     expect(page).to have_content("Likes: #{post.likes_counter}")
   end
 end
-require 'rails_helper'
 
 RSpec.feature 'UserInteractions', type: :feature do
   let(:user) { create(:user) } # Assuming you have factories set up

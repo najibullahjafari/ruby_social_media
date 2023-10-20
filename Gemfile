@@ -30,7 +30,6 @@ gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
-gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -57,9 +56,7 @@ group :development, :test do
 
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'faker'
   gem 'rspec-rails', '~> 5.0'
-  gem 'simplecov', require: false
   gem 'simplecov', require: false
 end
 
@@ -77,13 +74,8 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 4.0'
-  gem 'webdrivers', '~> 4.0'
-  # gem 'launchy'
-  gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'webdrivers', '~> 4.0'
   # gem 'launchy'
