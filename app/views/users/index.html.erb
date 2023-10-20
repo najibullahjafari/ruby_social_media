@@ -1,15 +1,17 @@
-<h1 class="display-4 mb-4">All Users</h1>
-<div class="list-group">
+<div class="users-container">
   <% @users.each do |user| %>
-    <div class="list-group-item">
-      <div class="d-flex">
-        <% if user.photo_url.present? %>
-          <img src="<%= user.photo_url %>" alt="<%= user.name %>" class="rounded-circle me-3" style="max-width: 50px;">
-        <% end %>
-        <div class="user-details">
-          <h2 class="h5"><%= link_to user.name, user_path(user), class: "text-primary text-decoration-none" %></h2>
-          <span class="badge badge-info me-3">Posts: <%= user.posts.count %></span>
-        </div>
+    <div class="user-card">
+      <div class="user-image">
+       <div class="user-image">
+      <% if user.photo.present? %>
+      <%= image_tag user.photo, alt: user.name, class: "user-photo" %>
+      <% end %>
+    </div>
+
+      </div>
+      <div class="user-info">
+        <h3><%= link_to user.name, user_path(user), class: "user-name" %></h3>
+        <p><%= user.posts_counter %> Posts</p>
       </div>
     </div>
   <% end %>

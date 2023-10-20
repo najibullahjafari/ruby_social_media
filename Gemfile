@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
-
-gem 'loofah', '~>2.21.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -28,11 +26,9 @@ gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
-# Gemfile
-gem 'nokogiri'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -45,11 +41,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-gem 'bootstrap', '~> 5.3.1'
-# Gemfile
-gem 'will_paginate', '~> 3.3'
-
-gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -60,15 +51,11 @@ gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  # Add RSpec for testing
-  gem 'factory_bot_rails'
-  gem 'psych', '~>3.0'
-  gem 'rspec-rails', '~> 5.0'
-  gem 'shoulda-matchers', '~> 5.0'
 
-  gem 'chromedriver-helper', '~> 1.0'
-  gem 'watir-rails', '~> 2.0'
-  gem 'webdrivers', '~> 5.0', require: false
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails', '~> 5.0'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -84,11 +71,18 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara', '~> 3.39', '>= 3.39.2'
+  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
-
-  gem 'cleanup'
-
-  gem 'faker', '~> 3.2', '>= 3.2.1'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'webdrivers', '~> 4.0'
+  # gem 'launchy'
+  gem 'database_cleaner'
 end
+
+gem 'bootstrap', '~> 5' # Use the version you want.
+gem 'devise'
+gem 'letter_opener'
+gem 'popper_js', '~> 2.9'
+gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'will_paginate'

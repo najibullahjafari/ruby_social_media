@@ -1,41 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# Creating 5 users
-5.times do |i|
-  user = User.create!(
-    name: "User #{i + 1}",
-    bio: "This is the bio for User #{i + 1}.",
-    photo_url: "https://example.com/user#{i + 1}.jpg"
-  )
+require 'faker'
 
-  # For each user, creating 3 posts
-  3.times do |j|
-    post = Post.create!(
-      title: "Post #{j + 1} by User #{i + 1}",
-      text: "This is the body of Post #{j + 1} by User #{i + 1}.",
-      author: user
+# Create 15 users
+users = 15.times.map do
+  User.create!(
+    name: Faker::Name.name,
+    bio: Faker::Lorem.sentence(word_count: rand(7..15)),
+    photo: Faker::Avatar.image(slug: Faker::Internet.unique.username, size: "120x120")
+  )
+end
+
+# For each user, create 10 posts
+users.each do |user|
+  15.times do
+    post = user.posts.create!(
+      title: Faker::Book.title,
+      body: Faker::Lorem.paragraph(sentence_count: rand(5..25))
     )
 
-    # For each post, creating 2 comments
-    2.times do |k|
-      Comment.create!(
-        text: "Comment #{k + 1} on Post #{j + 1} by User #{i + 1}",
-        user:,
-        post:
-      )
-    end
-
-    # For each post, creating 2 likes
-    2.times do
-      user_for_like = User.where.not(id: user.id).sample
-      Like.create!(
-        user: user_for_like,
-        post:
+    # Each of the other users comments once on the post
+    (users - [user]).each do |commenter|
+      post.comments.create!(
+        content: Faker::Lorem.sentence(word_count: rand(1..15)),
+        user: commenter
       )
     end
   end

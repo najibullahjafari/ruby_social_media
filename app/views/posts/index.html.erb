@@ -1,24 +1,35 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <!-- Create Post Button -->
-      <%= link_to 'Create Post', new_user_post_path(@user), class: 'btn btn-primary mb-4' %>
-
-      <!-- List of my posts -->
-      <h1 class="mb-4">List of Posts</h1>
-      <ul class="list-group">
-  <% @posts.each do |post| %>
-    <li class="list-group-item">
-      <%= link_to post.title, user_post_path(@user, post), class: 'text-decoration-none' %>
-      <ul class="list-group list-group-flush mt-2">
-        <% post.comments.each do |comment| %>
-          <li class="list-group-item"><%= comment.text %></li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
-
+<div class="container posts-container">
+  <div class="user-header">
+    <div class="user-image">
+      <% if @user.photo.present? %>
+        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo img-fluid rounded-circle" %>
+      <% end %>
     </div>
+
+    <div class="user-info">
+      <h2><%= @user.name %></h2>
+      <p class="text-muted">Number of posts: <%= @user.posts.size %></p>
+    </div>
+  </div>
+
+  <% @posts.each do |post| %>
+    <div class="card post-card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to post.title, user_post_path(post.author, post), class: "user-name" %>
+        </h5>
+        <p class="card-text"><%= post.body.truncate(100) %></p>
+      </div>
+      <div class="card-footer">
+        <div class="post-stats">
+          <span class="mr-3"><i class="far fa-comments"></i> <%= post.comments.size %> Comments</span>
+          <span><i class="far fa-thumbs-up"></i> <%= post.likes_counter %> Likes</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="pagination d-flex justify-content-center">
+    <!-- Add pagination logic/links here if necessary -->
   </div>
 </div>
