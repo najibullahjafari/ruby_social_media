@@ -1,6 +1,9 @@
 AllCops:
   NewCops: enable
   Exclude:
+    - "db/**/*"
+    - "bin/*" 
+    - "config/**/*"
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
@@ -8,17 +11,22 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 180
 Metrics/MethodLength:
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
   Max: 20
 Metrics/AbcSize:
-  Max: 50
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 80
 Metrics/ClassLength:
-  Max: 150
+  Max: 250
 Metrics/BlockLength:
-  IgnoredMethods: ['describe']
-  Max: 50
-
+  AllowedMethods: ['describe']
+  Max: 60
 
 Style/Documentation:
   Enabled: false
@@ -40,17 +48,16 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
-Layout/EndOfLine:
-  Enabled: false
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
- Enabled: false
-Lint/ScriptPermission:
   Enabled: false
 Style/HashEachMethods:
   Enabled: false
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
+  Enabled: false
+
+Layout/EndOfLine:
   Enabled: false

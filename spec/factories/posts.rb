@@ -1,10 +1,9 @@
-# spec/factories/posts.rb
-
 FactoryBot.define do
   factory :post do
-    title { "Sample Post Title #{Faker::Lorem.word}" }
+    title { 'Specific Test Title' }
+    body { 'This is a test post.' }
     comments_counter { 0 }
-    likes_counter { 0 }
-    association :author, factory: :user
+
+    author { create(:user) }
   end
 end

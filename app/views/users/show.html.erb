@@ -1,48 +1,35 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <!-- User Info -->
-    </div>
-
-    <div class="col-md-8">
-      <!-- User Bio -->
-      <!-- User Info -->
-      <div class="user-info">
-        <!-- Profile Picture -->
-        <% if @user.photo_url.present? %>
-          <img src="<%= @user.photo_url %>" alt="<%= @user.name %>" class="img-fluid rounded-circle">
-        <% end %>
-        <!-- User Name -->
-        <h1><%= @user.name %></h1>
-        <!-- Number of Posts -->
-        <p><strong>Number of Posts:</strong> <%= @user.posts.count %></p>
-        <!-- Add other user information here -->
-        <p><strong>Bio:</strong> <%= @user.bio %></p>
-        <!-- Add more user attributes as needed -->
-      </div>
-
-      <!-- List of All Posts by the User -->
-      <div class="user-posts">
-        <h2 class="mt-4">All Posts by <%= @user.name %></h2>
-        <ul class="list-group">
-          <% @posts.each do |post| %>
-            <li class="list-group-item">
-              <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
-              <p>Comments: <%= post.comments_counter %> | Likes: <%= post.likes_counter %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <!-- Show More Button (optional) -->
-      <% if @posts.next_page %>
-        <%= link_to 'Show More Posts', user_posts_path(@user, page: @posts.next_page), class: 'btn btn-primary mt-4' %>
+<div class="user-profile-container">
+  <div class="user-profile">
+    <div class="user-image">
+      <% if @user.photo.present? %>
+        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo" %>
       <% end %>
+    </div>
+    <div class="user-info">
+      <h2><%= @user.name %></h2>
+      <p>Number of posts: <%= @user.posts_counter %></p>
+      <div class="user-bio">
+        <h3>Bio</h3>
+        <p><%= @user.bio %></p>
+      </div>
+      <%= link_to 'Create New Post', new_post_path %>
+    </div>
+  </div>
 
-      <!-- Create Post Button -->
-      <button>
-        <%= link_to 'Create Post', new_user_post_path(@user), class: 'btn btn-primary no-border' %>
-      </button>
+  <div class="user-posts">
+    <h3>Posts:</h3>
+    <% @user.posts.recent.each do |post| %>
+      <div class="user-post">
+        <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
+        <p><%= post.body&.truncate(100) %></p>
+        <div class="post-stats">
+          <span>Comments: <%= post.comments_counter %></span>
+          <span>Likes: <%= post.likes_counter %></span>
+        </div>
+      </div>
+    <% end %>
+    <div class="see-all-posts">
+      <%= link_to "See all posts", user_posts_path(@user) %>
     </div>
   </div>
 </div>

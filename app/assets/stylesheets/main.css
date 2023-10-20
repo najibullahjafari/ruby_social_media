@@ -1,0 +1,161 @@
+/* stylelint-disable no-descending-specificity */
+
+/* Reset styles */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Common Post Styles */
+.user-post,
+.post,
+.single-user,
+.user-card,
+.user-profile,
+.post-card,
+.user-header,
+.post-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+
+/* Navigation */
+.nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.nav a {
+  color: #fff;
+  margin-right: 20px;
+}
+
+/* Users List */
+.users-list,
+.users-container,
+.user-profile-container,
+.posts-container {
+  margin: 40px auto;
+  padding: 20px 0;
+}
+
+.single-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-card,
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-card:hover {
+  background-color: #f7f7f7;
+}
+
+.user-photo,
+.profile-photo {
+  max-width: 100%;
+  max-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+.user-info h2 {
+  margin-bottom: 10px;
+}
+
+.user-name {
+  color: #333;
+}
+
+.user-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.see-all-posts {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.see-all-posts a {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.see-all-posts a:hover {
+  background-color: #f7f7f7;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 24px;
+}
+
+.post-content {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.comments-section {
+  margin-top: 30px;
+}
+
+.comment {
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+  margin-bottom: 5px;
+}
+
+/* Improving legibility */
+.post-stats {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #888;
+}

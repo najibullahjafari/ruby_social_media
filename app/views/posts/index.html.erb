@@ -1,24 +1,35 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <!-- Create Post Button -->
-      <%= link_to 'Create Post', new_user_post_path(@user), class: 'btn btn-primary mb-4' %>
-
-      <!-- List of my posts -->
-      <h1 class="mb-4">List of Posts</h1>
-      <ul class="list-group">
-  <% @posts.each do |post| %>
-    <li class="list-group-item">
-      <%= link_to post.title, user_post_path(@user, post), class: 'text-decoration-none' %>
-      <ul class="list-group list-group-flush mt-2">
-        <% post.comments.each do |comment| %>
-          <li class="list-group-item"><%= comment.text %></li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
-
+<div class="posts-container">
+  <div class="user-header">
+    <div class="user-image">
+      <%= image_tag @user.photo, alt: @user.name, class: "profile-photo" %>
     </div>
+    <div class="user-info">
+      <h2><%= @user.name %></h2>
+      <p>Number of posts: <%= @user.posts.size %></p>
+    </div>
+  </div>
+
+  <% @posts.each do |post| %>
+    <div class="post-card">
+      <h3>
+          <h3><%= link_to post.title, user_post_path(post.author, post), class: "user-name" %></h3>
+      </h3>
+      <p><%= post.body.truncate(100) %></p>
+      <div class="post-stats">
+        <span>Comments: <%= post.comments.size %></span>
+        <span>Likes: <%= post.likes_counter %></span>
+      </div>
+      <div class="post-comments">
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="pagination">
+    <!-- Add pagination logic/links here if necessary -->
   </div>
 </div>
