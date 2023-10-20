@@ -1,7 +1,7 @@
-/* stylelint-disable no-descending-specificity */
+/* stylelint-disable function-calc-no-invalid */
 
-/* DataTables styles here... */
-/* stylelint-enable no-descending-specificity */
+/* Your CSS code that should ignore the "function-calc-no-invalid" rule */
+/* stylelint-enable function-calc-no-invalid */
 
 /* stylelint-disable no-descending-specificity */
 
@@ -12,6 +12,5 @@
  *= require_tree .
  *= require_self
 */
-
 
 @import 'bootstrap';
