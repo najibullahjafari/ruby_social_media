@@ -3,6 +3,15 @@
 /* DataTables styles here... */
 /* stylelint-enable no-descending-specificity */
 
+/* stylelint-disable no-descending-specificity */
+
+/* DataTables styles here... */
+/* stylelint-enable no-descending-specificity */
+
+/*
+ *= require_tree .
+ *= require_self
+*/
 /*
  *= require_tree .
  *= require_self
