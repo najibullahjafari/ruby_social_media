@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-/node_modules
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -31,6 +30,14 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/config/credentials/production.key
+# Ignore yarn files.
+/yarn-error.log
 
-/config/master.key
+# Ignore node_modules
+/node_modules
+
+# Ignore everything in the coverage directory
+/coverage/*
+
+# Except the .resultset.json
+!/coverage/.resultset.json

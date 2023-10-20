@@ -1,26 +1,17 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">Create a New Post</div>
-        <div class="card-body">
-          <%= form_with(model: [@user, @post], url: create_post_path) do |form| %>
-            <div class="mb-3">
-              <%= form.label :title, class: "form-label" %>
-              <%= form.text_field :title, class: "form-control" %>
-            </div>
+<h2>Create a New Post</h2>
 
-            <div class="mb-3">
-              <%= form.label :text, class: "form-label" %>
-              <%= form.text_area :text, class: "form-control", rows: 5 %>
-            </div>
-
-            <div class="text-center">
-              <%= form.submit "Create Post", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<%= form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, id: 'post_title_field' %>
   </div>
-</div>
+
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Post" %>
+  </div>
+<% end %>

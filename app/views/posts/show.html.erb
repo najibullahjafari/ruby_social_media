@@ -1,53 +1,39 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title"><%= @post.title %></h2>
-          <p class="card-subtitle mb-2 text-muted">Posted by <strong><%= @post.author.name %></strong></p>
-          <p class="card-text">
-            <div class="post-content mt-4">
-              <%= @post.text %>
-            </div>
-            <div class="mt-4">
-              <span class="me-3">Comments: <strong><%= @post.comments_counter %></strong></span>
-              Likes: <strong><%= @post.likes_counter %></strong>
-            </div>
-          </p>
+<div class="post-wrapper">
+
+    <!-- Post Header -->
+    <div class="post-header">
+        <h2 class="post-title">Post #<%= @post.id %> by <%= @post.author.name %></h2>
+        <div class="post-metadata">
+            <span>Comments: <%= @post.comments.count %></span>
+            <%= button_to 'Like', post_likes_path(@post), method: :post %>
+            <span>Likes: <%= @post.likes_counter %></span>
+
+            <!-- You can add likes in the same manner if you have implemented that -->
         </div>
-      </div>
-
-      <!-- Display previous comments -->
-      <div class="mt-4">
-        <h6>Comments</h6>
-        <ul class="list-group">
-          <!-- Loop through comments and display them -->
-          <% @post.comments.each do |comment| %>
-            <li class="list-group-item">
-              <strong><%= comment.user.name %>:</strong>
-              <%= comment.text %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <!-- Comment Form -->
-      <div class="mt-4">
-        <h6>Add a Comment</h6>
-        <%= form_with model: [@user, @post, Comment.new], url: create_comment_path(user_id: @user.id, post_id: @post.id) do |form| %>
-          <div class="form-group">
-            <%= form.text_area :text, class: 'form-control', placeholder: 'Write a comment...', rows: 3 %>
-          </div>
-          <div class="d-grid">
-            <%= form.submit 'Submit Comment', class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
-
-      <!-- Like Button -->
-      <form method="post" action="<%= like_user_post_path(user_id: @post.author.id, post_id: @post.id) %>" style="display: inline;">
-        <input type="submit" value="Like" class="btn btn-primary mt-4">
-      </form>
     </div>
-  </div>
+
+    <!-- Post Content -->
+    <p class="post-content">
+        <%= @post.body %>
+    </p>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+        <h3>Comments:</h3>
+        <% @post.comments.each do |comment| %>
+
+
+            <div class="comment">
+                <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+            </div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form_with(model: [@post, Comment.new], local: true) do |form| %>
+        <%= form.text_area :content, placeholder: "Add a comment..." %>
+        <%= form.submit "Comment" %>
+        <% end %>
+    </div>
+
 </div>
