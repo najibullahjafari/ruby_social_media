@@ -50,7 +50,6 @@ RSpec.describe Post, type: :model do
 
       # Now, decrement the counter to simulate a scenario where we want to test the increment function
       user.decrement!(:posts_counter)
-
       # Call the method
       post.update_user_posts_counter
 
@@ -59,7 +58,6 @@ RSpec.describe Post, type: :model do
   end
 end
 # spec/models/post_spec.rb
-
 
 RSpec.describe Post, type: :model do
   # For creating valid objects during testing
