@@ -4,5 +4,7 @@ FactoryBot.define do
     posts_counter { 0 }
     bio { 'Test bio.' }
     # ... other attributes
+    bio { 'Test bio.' }
+    # ... other attributes
   end
 end

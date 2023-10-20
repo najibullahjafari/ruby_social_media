@@ -1,35 +1,37 @@
-<div class="user-profile-container">
-  <div class="user-profile">
-    <div class="user-image">
+<div class="container user-profile-container">
+  <div class="row user-profile">
+    <div class="col-md-4 user-image">
       <% if @user.photo.present? %>
-        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo" %>
+        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo img-fluid" %>
       <% end %>
     </div>
-    <div class="user-info">
+    <div class="col-md-8 user-info">
       <h2><%= @user.name %></h2>
       <p>Number of posts: <%= @user.posts_counter %></p>
       <div class="user-bio">
         <h3>Bio</h3>
         <p><%= @user.bio %></p>
       </div>
-      <%= link_to 'Create New Post', new_post_path %>
+      <%= link_to 'Create New Post', new_post_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
   <div class="user-posts">
     <h3>Posts:</h3>
     <% @user.posts.recent.each do |post| %>
-      <div class="user-post">
-        <h4><%= link_to post.title, user_post_path(@user, post) %></h4>
-        <p><%= post.body&.truncate(100) %></p>
-        <div class="post-stats">
-          <span>Comments: <%= post.comments_counter %></span>
+      <div class="user-post card mb-3">
+        <h4 class="card-header"><%= link_to post.title, user_post_path(@user, post) %></h4>
+        <div class="card-body">
+          <p class="card-text"><%= post.body&.truncate(100) %></p>
+        </div>
+        <div class="card-footer post-stats">
+          <span class="mr-3">Comments: <%= post.comments_counter %></span>
           <span>Likes: <%= post.likes_counter %></span>
         </div>
       </div>
     <% end %>
     <div class="see-all-posts">
-      <%= link_to "See all posts", user_posts_path(@user) %>
+      <%= link_to "See all posts", user_posts_path(@user), class: "btn btn-secondary" %>
     </div>
   </div>
 </div>

@@ -1,8 +1,14 @@
 <div class="users-container">
+<div class="users-container">
   <% @users.each do |user| %>
     <div class="user-card">
       <div class="user-image">
-        <%= image_tag user.photo, alt: user.name, class: "user-photo" %>
+       <div class="user-image">
+      <% if user.photo.present? %>
+      <%= image_tag user.photo, alt: user.name, class: "user-photo" %>
+      <% end %>
+    </div>
+
       </div>
       <div class="user-info">
         <h3><%= link_to user.name, user_path(user), class: "user-name" %></h3>

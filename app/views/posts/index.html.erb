@@ -1,35 +1,35 @@
-<div class="posts-container">
+<div class="container posts-container">
   <div class="user-header">
     <div class="user-image">
-      <%= image_tag @user.photo, alt: @user.name, class: "profile-photo" %>
+      <% if @user.photo.present? %>
+        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo img-fluid rounded-circle" %>
+      <% end %>
     </div>
+
     <div class="user-info">
       <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.posts.size %></p>
+      <p class="text-muted">Number of posts: <%= @user.posts.size %></p>
     </div>
   </div>
 
   <% @posts.each do |post| %>
-    <div class="post-card">
-      <h3>
-          <h3><%= link_to post.title, user_post_path(post.author, post), class: "user-name" %></h3>
-      </h3>
-      <p><%= post.body.truncate(100) %></p>
-      <div class="post-stats">
-        <span>Comments: <%= post.comments.size %></span>
-        <span>Likes: <%= post.likes_counter %></span>
+    <div class="card post-card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to post.title, user_post_path(post.author, post), class: "user-name" %>
+        </h5>
+        <p class="card-text"><%= post.body.truncate(100) %></p>
       </div>
-      <div class="post-comments">
-        <% post.comments.each do |comment| %>
-          <div class="comment">
-            <strong><%= comment.user.name %>:</strong> <%= comment.content %>
-          </div>
-        <% end %>
+      <div class="card-footer">
+        <div class="post-stats">
+          <span class="mr-3"><i class="far fa-comments"></i> <%= post.comments.size %> Comments</span>
+          <span><i class="far fa-thumbs-up"></i> <%= post.likes_counter %> Likes</span>
+        </div>
       </div>
     </div>
   <% end %>
 
-  <div class="pagination">
+  <div class="pagination d-flex justify-content-center">
     <!-- Add pagination logic/links here if necessary -->
   </div>
 </div>
