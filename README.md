@@ -33,6 +33,7 @@
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Blog App <a name="about-project"></a>
+
 - [📗 Table of Contents](#-table-of-contents)
 - [📖 Blog App ](#-blog-app-)
   - [🛠 Built With ](#-built-with-)
@@ -58,10 +59,8 @@
 # 📖 Blog App <a name="about-project"></a>
 
 **Blog in Rails App** empowers the end-users to start a new blog-post, comment and like existing content.
-**Blog in Rails App** empowers the end-users to start a new blog-post, comment and like existing content.
 
 ## 🛠 Built With <a name="built-with"></a>
-
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -97,8 +96,6 @@
 
 - **Make use for migrations features from Active Record**
 - **Include Tables for User, Comment, Post, and Like**
-- **Make use for migrations features from Active Record**
-- **Include Tables for User, Comment, Post, and Like**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,17 +105,11 @@
 
 To get a local copy up and running, follow these steps.
 Note: We are assuming you have pre-installed ruby, WSL, ubuntu and rails!
-Note: We are assuming you have pre-installed ruby, WSL, ubuntu and rails!
 
 ### Prerequisites
 
 In order to run this project you need:
 
-first at all, install rails:
-
-```sh
- gem install rails
-```
 first at all, install rails:
 
 ```sh
@@ -131,7 +122,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-git@github.com:cancelei/blog-in-rails.git
+git@github.com/najibullahjafari/ruby_social_media.git
 ```
 
 ### Install
@@ -169,8 +160,8 @@ Before running tests, ensure you've set up the test database:
 bin/rails db:migrate RAILS_ENV=test
 ```
 
-**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests. 
-We therefore recommend that, rather than running all the tests, you only test the `features` folder and run 
+**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests.
+We therefore recommend that, rather than running all the tests, you only test the `features` folder and run
 
 ```sh
 bundle exec rspec ./spec/features
@@ -231,8 +222,8 @@ Before running tests, ensure you've set up the test database:
 bin/rails db:migrate RAILS_ENV=test
 ```
 
-**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests. 
-We therefore recommend that, rather than running all the tests, you only test the `features` folder and run 
+**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests.
+We therefore recommend that, rather than running all the tests, you only test the `features` folder and run
 
 ```sh
 bundle exec rspec ./spec/features
@@ -257,7 +248,7 @@ You can deploy this project using:
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
-  
+
 👤 **Najibullah Jafari**
 
 - GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
@@ -268,7 +259,6 @@ You can deploy this project using:
 
 - GitHub: [@cancelei](https://github.com/cancelei)
 - LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
-
 
 👤 **Joseph L Kausi**
 
@@ -283,6 +273,7 @@ You can deploy this project using:
 ## 🔭 Future Features <a name="future-features"></a>
 
 > We this project can improve, we are planning to include the next features soon:
+
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
@@ -313,7 +304,7 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://www.linkedin.com/in/najibullahjafari/ruby_social_media/issues).
+Feel free to check the [issues page](https://github.com/najibullahjafari/ruby_social_media/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -322,9 +313,7 @@ Feel free to check the [issues page](https://www.linkedin.com/in/najibullahjafar
 ## ⭐️ Show your support <a name="support"></a>
 
 > Would you like to help?
-> Would you like to help?
 
-If you like this project feel free to leave an start, as well if you have a suggestion feel free to visit issues page.
 If you like this project feel free to leave an start, as well if you have a suggestion feel free to visit issues page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -356,7 +345,8 @@ I would like to thank Microverse for suggestion this project.
   ```sh
   npx stylelint "**/*.{css,scss}" --fix
   ```
-I would like to thank Microverse for suggestion this project.
+
+  I would like to thank Microverse for suggestion this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
