@@ -3,6 +3,5 @@ FactoryBot.define do
     name { 'Test User' }
     posts_counter { 0 }
     bio { 'Test bio.' }
-    # ... other attributes
   end
 end

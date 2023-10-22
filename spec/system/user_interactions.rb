@@ -15,7 +15,6 @@ RSpec.feature 'UserInteractions', type: :feature do
     post = create(:post, author: user, title: specific_title, body: specific_body)
     visit user_path(user)
     click_on specific_title
-    # expect(page).to have_current_path(post_path(post))
     expect(page).to have_content(specific_title)
     expect(page).to have_content(post.body) if post.body.present?
   end

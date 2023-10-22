@@ -81,10 +81,9 @@ group :test do
 end
 
 gem 'bootstrap', '~> 5' # Use the version you want.
+gem 'cancancan'
 gem 'devise'
 gem 'letter_opener'
 gem 'popper_js', '~> 2.9'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'will_paginate'
-gem 'cancancan'
-

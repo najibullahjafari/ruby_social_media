@@ -9,12 +9,4 @@ class LikesController < ApplicationController
       redirect_to post_path(@post), alert: 'Error liking post.'
     end
   end
-
-   def destroy
-    @like = Like.find(params[:id])
-    @post = @like.post
-
-    @like.destroy
-    redirect_back(fallback_location: @post)
-  end
 end

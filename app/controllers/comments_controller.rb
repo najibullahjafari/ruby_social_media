@@ -1,28 +1,16 @@
 class CommentsController < ApplicationController
   def new
-    @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
 
   def create
-    @current_user = current_user
-    @comment = @current_user.comments.new(comment_params)
-    @comment.post_id = params[:post_id]
-
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(comment_params.merge(user: current_user))
     if @comment.save
-      redirect_to user_post_path(@current_user, @comment.post)
+      redirect_to @post, notice: 'Comment was successfully added.'
     else
-      @post = Post.find(params[:post_id])
-      redirect_to post_path(@post)
-
-  def destroy
-    comment = Comment.find(params[:id])
-    post = comment.post
-    user = comment.user
-
-    return unless comment.destroy
-
-    redirect_to user_post_url(user, post)
+      render :new
+    end
   end
 
   private
