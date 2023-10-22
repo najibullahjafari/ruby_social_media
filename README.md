@@ -53,6 +53,7 @@
 <summary>Database</summary>
   <ul>
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
   </ul>
 </details>
 
@@ -86,6 +87,68 @@ first at all, install rails:
 
 Clone this repository to your desired folder:
 
+```sh
+  cd my-folder
+git@github.com/najibullahjafari/ruby_social_media.git
+```
+
+### Install
+
+Install this project with:
+
+```sh
+  cd blog-app
+  bundle install
+```
+
+Setting up the Data Base:
+
+```sh
+  rails db:create
+  rails db:migrate
+  rails db:seed
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  rails server
+```
+
+### Run tests
+
+<!-- Test are under construction, but we expect to have them completed soon! -->
+
+Before running tests, ensure you've set up the test database:
+
+```sh
+bin/rails db:migrate RAILS_ENV=test
+```
+
+**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests.
+We therefore recommend that, rather than running all the tests, you only test the `features` folder and run
+
+```sh
+bundle exec rspec ./spec/features
+
+```
+
+### Deployment
+
+The deployment will be available soon !
+
+<!--
+Example:
+You can deploy this project using:
+
+```sh
+
+```
+ -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 ```sh
   cd my-folder
 git@github.com:cancelei/blog-in-rails.git
@@ -126,8 +189,8 @@ Before running tests, ensure you've set up the test database:
 bin/rails db:migrate RAILS_ENV=test
 ```
 
-**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests. 
-We therefore recommend that, rather than running all the tests, you only test the `features` folder and run 
+**Note:** Given that the aim of this project is to test the application's UI, to see if it works without side effects. We have therefore had to modify the contents of certain files, which could have the effect of falsifying certain `Unit` tests.
+We therefore recommend that, rather than running all the tests, you only test the `features` folder and run
 
 ```sh
 bundle exec rspec ./spec/features
@@ -153,7 +216,6 @@ You can deploy this project using:
 
 ## 👥 Authors <a name="authors"></a>
 
-  
 👤 **Najibullah Jafari**
 
 - GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
@@ -165,7 +227,6 @@ You can deploy this project using:
 - GitHub: [@cancelei](https://github.com/cancelei)
 - LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
 
-
 👤 **Joseph L Kausi**
 
 - GitHub: [@Grandi0z](https://github.com/Grandi0z)
@@ -173,6 +234,14 @@ You can deploy this project using:
 - LinkedIn: [Joseph L Kausi](https://www.linkedin.com/in/joskal/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+1. Add a beautifull UI
+2. Add an endpoint for our API
+
+> We this project can improve, we are planning to include the next features soon:
 
 <!-- FUTURE FEATURES -->
 
@@ -187,7 +256,15 @@ You can deploy this project using:
 - [x] **Controllers Testing**
 - [x] **Models Testing**
 - [x] **View Implementation**
+- [x] **User Interface**
+- [x] **Validations**
+- [ ] **API documentation**
+- [x] **Model Data**
+- [x] **Controllers Testing**
+- [x] **Models Testing**
+- [x] **View Implementation**
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
@@ -196,7 +273,7 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://www.linkedin.com/in/najibullahjafari/ruby_social_media/issues).
+Feel free to check the [issues page](https://github.com/najibullahjafari/ruby_social_media/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -215,6 +292,30 @@ If you like this project feel free to leave an start, as well if you have a sugg
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 I would like to thank Microverse for suggestion this project.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FAQ (optional) -->
+
+## ❓ FAQ (OPTIONAL) <a name="faq"></a>
+
+> Learn more about FAQ below:
+
+- **How do I fix Linters errors if I modify the project?**
+
+  - for rubocop run
+
+  ```sh
+  rubocop -A
+  ```
+
+  - for Stylint run:
+
+  ```sh
+  npx stylelint "**/*.{css,scss}" --fix
+  ```
+
+  I would like to thank Microverse for suggestion this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

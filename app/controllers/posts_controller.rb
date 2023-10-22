@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
+    params.require(:post).permit(:title, :body) # Add other post attributes if any
     params.require(:post).permit(:title, :body) # Add other post attributes if any
   end
 end
