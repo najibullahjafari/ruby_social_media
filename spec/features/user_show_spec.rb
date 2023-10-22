@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'User show page', type: :feature do
   before do
     @user = create(:user, name: 'John', photo: 'https://example.jpg', bio: 'Software Engineer')
-    # Create some posts associated with the user
     @post1 = create(:post, author: @user, title: 'Post 1', body: 'Body of post 1')
     @post2 = create(:post, author: @user, title: 'Post 2', body: 'Body of post 2')
     @post3 = create(:post, author: @user, title: 'Post 3', body: 'Body of post 3')

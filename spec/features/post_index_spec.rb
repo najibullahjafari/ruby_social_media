@@ -39,18 +39,15 @@ RSpec.describe 'User post index page', type: :feature do
   end
 
   scenario 'I can see how many likes a post has' do
-    # Add code to display the number of likes on the post, e.g., 'Likes: 5'
     expect(page).to have_content('Likes: 3')
   end
 
   scenario 'I can see a section for pagination if there are more posts than fit on the view' do
-    # Assuming 10 posts are created, and per your pagination settings, you want to show 5 per page
     expect(page).to have_css('div.pagination')
   end
 
   scenario 'When I click on a post, it redirects me to that post\'s show page' do
     click_link 'Post 1'
-    # expect(current_path).to eq(user_post_path(@user1, @posts[0]))
     expect(page).to have_current_path(user_post_path(@user1, @posts[0]))
   end
 end
