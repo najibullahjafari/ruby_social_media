@@ -1,7 +1,18 @@
 class PostsController < ApplicationController
   def index
-    @user = User.includes(posts: :comments).find(params[:user_id])
-    @posts = @user.posts.includes(comments: :user)
+    if params[:user_id].present?
+      @user = User.includes(posts: :comments).find_by(id: params[:user_id])
+
+      if @user
+        @posts = @user.posts.includes(comments: :user)
+      else
+        # Handle the case when the user is not found.
+        redirect_to users_path, alert: 'User not found'
+      end
+    else
+      # Handle the case where user_id is not provided (e.g., after deleting a post).
+      redirect_to users_path # Redirect to a user listing page, for example.
+    end
   end
 
   # This action is for rendering the form to create a new post.
@@ -14,7 +25,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @post = Post.find(params[:id])
   end
 
@@ -29,15 +39,22 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    authorize! :delete, @post
-    @post.destroy
-    redirect_to posts_path, notice: 'Post was successfully deleted.'
+
+    if @post.author == current_user
+      # Decrement the user's post counter
+      current_user.decrement!(:posts_counter)
+      # Destroy the post
+      @post.destroy
+
+      redirect_to users_path, notice: 'Post was successfully deleted.'
+    else
+      redirect_to users_path, alert: 'You are not authorized to delete this post.'
+    end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body) # Add other post attributes if any
     params.require(:post).permit(:title, :body) # Add other post attributes if any
   end
 end
