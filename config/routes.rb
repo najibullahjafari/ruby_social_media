@@ -28,4 +28,5 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :create] # API endpoint to list comments for a post and add comments
     end
   end
+
 end
