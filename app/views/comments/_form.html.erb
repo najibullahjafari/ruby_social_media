@@ -1,6 +1,7 @@
+<div class = "container">
 <%= form_for [@post, @comment] do |f| %>
   <% if @comment.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
       <ul>
       <% @comment.errors.full_messages.each do |message| %>
@@ -10,12 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "form-control", rows: 3 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="text-right">
+    <%= f.submit "Comment", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>

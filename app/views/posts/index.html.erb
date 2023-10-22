@@ -25,8 +25,8 @@
           <span class="mr-3"><i class="far fa-comments"></i> <%= post.comments.size %> Comments</span>
           <span><i class="far fa-thumbs-up"></i> <%= post.likes_counter %> Likes</span>
           <% if can? :delete, post %>
-            <%= form_with url: post_path(post), method: :delete, local: true do %>
-              <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+            <%= form_with url: post_path(post), method: :delete, local: true do |form| %>
+              <%= submit_tag 'Delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
         </div>
@@ -35,6 +35,5 @@
   <% end %>
 
   <div class="pagination d-flex justify-content-center">
-    <!-- Add pagination logic/links here if necessary -->
   </div>
 </div>

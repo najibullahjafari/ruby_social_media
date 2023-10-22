@@ -31,7 +31,7 @@
           <span class="text-muted">Likes: <%= post.likes_counter %></span>
           <% if can? :delete, post %>
             <%= form_with url: post_path(post), method: :delete, local: true do |f| %>
-              <%= f.submit 'Delete', class: 'btn btn-link text-danger', data: { confirm: 'Are you sure?' } %>
+              <%= f.submit 'Delete', class: 'btn btn-light text-danger', data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
         </div>
