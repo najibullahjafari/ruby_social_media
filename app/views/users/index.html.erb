@@ -1,5 +1,4 @@
 <div class="users-container">
-<div class="users-container">
   <% @users.each do |user| %>
     <div class="user-card">
       <div class="user-image">
@@ -12,7 +11,7 @@
       </div>
       <div class="user-info">
         <h3><%= link_to user.name, user_path(user), class: "user-name" %></h3>
-        <p><%= user.posts_counter %> Posts</p>
+        <p><%= user.posts.count %> Posts</p>
       </div>
     </div>
   <% end %>
