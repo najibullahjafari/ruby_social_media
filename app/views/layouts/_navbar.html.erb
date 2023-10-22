@@ -18,6 +18,21 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Messages</a>
         </li>
+        <% if current_user %>
+          <% if current_user.admin? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Admin</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
