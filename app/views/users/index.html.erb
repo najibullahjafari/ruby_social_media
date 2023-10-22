@@ -1,18 +1,23 @@
-<div class="users-container">
-  <% @users.each do |user| %>
-    <div class="user-card">
-      <div class="user-image">
-       <div class="user-image">
-      <% if user.photo.present? %>
-      <%= image_tag user.photo, alt: user.name, class: "user-photo" %>
-      <% end %>
-    </div>
-
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="user-image">
+              <% if user.photo.present? %>
+                <%= image_tag user.photo, alt: user.name, class: "user-photo img-fluid" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to user.name, user_path(user), class: "user-name" %>
+            </h5>
+            <p class="card-text"><%= user.posts.count %> Posts</p>
+          </div>
+        </div>
       </div>
-      <div class="user-info">
-        <h3><%= link_to user.name, user_path(user), class: "user-name" %></h3>
-        <p><%= user.posts.count %> Posts</p>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

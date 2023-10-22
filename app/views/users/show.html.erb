@@ -2,40 +2,42 @@
   <div class="row user-profile">
     <div class="col-md-4 user-image">
       <% if @user.photo.present? %>
-        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo img-fluid" %>
+        <%= image_tag @user.photo, alt: @user.name, class: "profile-photo img-fluid rounded-circle" %>
       <% end %>
     </div>
     <div class="col-md-8 user-info">
-      <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.posts.count %></p>
-      <div class="user-bio">
-        <h3>Bio</h3>
-        <p><%= @user.bio %></p>
+      <h2 class="mb-2"><%= @user.name %></h2>
+      <p class="text-muted mb-3">Number of posts: <%= @user.posts.count %></p>
+      <div class="user-bio mb-4">
+        <h3 class="mb-2">Bio</h3>
+        <p class="text-muted"><%= @user.bio %></p>
       </div>
       <%= link_to 'Create New Post', new_post_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
-  <div class="user-posts">
-    <h3>Posts:</h3>
+  <div class="user-posts mt-4">
+    <h3 class="mb-3">Posts:</h3>
     <% @user.posts.recent.each do |post| %>
       <div class="user-post card mb-3">
-        <h4 class="card-header"><%= link_to post.title, user_post_path(@user, post) %></h4>
+        <h4 class="card-header">
+          <%= link_to post.title, user_post_path(@user, post), class: "text-dark" %>
+        </h4>
         <div class="card-body">
-          <p class="card-text"><%= post.body&.truncate(100) %></p>
+          <p class="card-text text-muted"><%= post.body&.truncate(100) %></p>
         </div>
         <div class="card-footer post-stats">
-          <span class="mr-3">Comments: <%= post.comments_counter %></span>
-          <span>Likes: <%= post.likes_counter %></span>
+          <span class="mr-3 text-muted">Comments: <%= post.comments_counter %></span>
+          <span class="text-muted">Likes: <%= post.likes_counter %></span>
           <% if can? :delete, post %>
-            <%= form_with url: post_path(post), method: :delete, local: true do %>
-              <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+            <%= form_with url: post_path(post), method: :delete, local: true do |f| %>
+              <%= f.submit 'Delete', class: 'btn btn-link text-danger', data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
         </div>
       </div>
     <% end %>
-    <div class="see-all-posts">
+    <div class="see-all-posts mt-3">
       <%= link_to "See all posts", user_posts_path(@user), class: "btn btn-secondary" %>
     </div>
   </div>

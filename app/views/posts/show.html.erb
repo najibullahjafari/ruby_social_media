@@ -1,42 +1,42 @@
-<div class="post-wrapper">
+<div class="post-wrapper shadow p-3 mb-5 bg-white rounded">
   <!-- Post Header -->
   <div class="post-header">
-    <h2 class="post-title">Post #<%= @post.id %> by <%= @post.author.name %></h2>
+    <h2 class="post-title"><%= @post.author.name %></h2>
   </div>
 
   <!-- Post Content -->
-  <p class="post-content">
+  <p class="post-content text-dark">
     <%= @post.body %>
   </p>
 
   <!-- Like and Comment Counts -->
   <div class="post-stats">
-    <span class="comment-count">Comments: <%= @post.comments.count %></span>
-    <span class="like-count">Likes: <%= @post.likes_counter %></span>
+    <span class="comment-count text-muted">Comments: <%= @post.comments.count %></span>
+    <span class="like-count text-muted ml-3">Likes: <%= @post.likes_counter %></span>
   </div>
 
   <!-- Like Button -->
-  <div class="like-button">
-    <%= button_to 'Like', post_likes_path(@post), method: :post, class: 'btn btn-primary' %>
+  <div class="like-button mt-3">
+    <%= button_to 'Like', post_likes_path(@post), method: :post, class: 'btn btn-outline-primary' %>
   </div>
 
   <!-- Comments Section -->
-  <div class="comments-section">
+  <div class="comments-section mt-4">
     <h3>Comments:</h3>
     <% @post.comments.each do |comment| %>
-      <div class="comment">
+      <div class="comment mt-3">
         <strong><%= comment.user.name %>:</strong> <%= comment.content %>
       </div>
     <% end %>
   </div>
 
   <!-- Add a Comment Form -->
-  <div class="add-comment-form">
+  <div class="add-comment-form mt-4">
     <%= form_with(model: [@post, Comment.new], local: true) do |form| %>
       <div class="form-group">
         <%= form.text_area :content, placeholder: "Add a comment...", class: "form-control" %>
       </div>
-      <%= form.submit "Comment", class: 'btn btn-primary comment-button' %>
+      <%= form.submit "Comment", class: 'btn btn-primary comment-button mt-2' %>
     <% end %>
   </div>
 </div>

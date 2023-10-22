@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  validates :content, presence: true
   belongs_to :user
   belongs_to :post
 
@@ -14,6 +15,4 @@ class Comment < ApplicationRecord
   end
 
   scope :recent, -> { order(created_at: :desc).limit(5) }
-
-  validates :content, presence: true
 end
