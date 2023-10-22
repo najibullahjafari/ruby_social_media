@@ -12,21 +12,9 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-lg-8">
-     
-          <%= render 'layouts/flash' %>
-
-          <%= yield %>
-        </div>
-
-        <div class="col-lg-4">
-          <!-- Add content for a sidebar here, if needed -->
-        </div>
-      </div>
+    <dib class = "container">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
     </div>
-
   </body>
 </html>

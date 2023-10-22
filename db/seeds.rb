@@ -4,6 +4,9 @@ require 'faker'
 users = 15.times.map do
   User.create!(
     name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password123', # Change this to a valid password
+    role: 'user', # Make sure 'user' is a valid role in your application
     bio: Faker::Lorem.sentence(word_count: rand(7..15)),
     photo: Faker::Avatar.image(slug: Faker::Internet.unique.username, size: "120x120")
   )
